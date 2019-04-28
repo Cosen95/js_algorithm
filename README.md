@@ -56,7 +56,7 @@ javascript数据结构与算法
   
   // 优化后
   var countBinarySubstrings =  function(str) {
-      let count = 0;
+    let count = 0;
     function match (str){
         const j = str.match(/^(0+|1+)/g)[0]
         const i = String((j[0] ^ 1)).repeat(j.length)
@@ -67,7 +67,7 @@ javascript数据结构与算法
     for (let i = 0; i < str.length - 1; i++ ){
         match(str.slice(i)) 
     }
-      return count 
+    return count 
   };
   ```
 
