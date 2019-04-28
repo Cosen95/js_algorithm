@@ -8,7 +8,7 @@ javascript数据结构与算法
 ### 字符串
 * 反转字符串中的单词
 
-  * 题目描述：给定一个字符串，你需要反转字符串中每个单词的字符顺序，同时仍保留空格和单词的初始顺序。
+  * 题目描述：给定一个字符串，你需要反转字符串中每个单词的字符顺序，同时仍保留空格和单词的初始顺序。（`https://leetcode-cn.com/problems/reverse-words-in-a-string-iii/`）
   ```
   export default (str) => {
     // 1、字符串按空格进行分隔，保存数组，数组元素的先后顺序就是单词的先后顺序
@@ -47,6 +47,22 @@ javascript数据结构与算法
   }
   return r.length
 }
+
+
+var countBinarySubstrings =  function(str) {
+    let count = 0;
+  function match (str){
+      const j = str.match(/^(0+|1+)/g)[0]
+      const i = String((j[0] ^ 1)).repeat(j.length)
+      if (str.startsWith(`${j}${i}`)) {
+         count++; 
+      }
+  }
+  for (let i = 0; i < str.length - 1; i++ ){
+      match(str.slice(i)) 
+  }
+    return count 
+};
  ```
 
 ### 数组
