@@ -119,6 +119,41 @@ javascript数据结构与算法
   ```
 
 * 正则表达式匹配
+  * 题目描述：给定一个非空的字符串，判断它是否可以由它的一个子串重复多次构成。给定的字符串只含有小写英文字母，并且长度不超过10000。
+  
+    地址： `https://leetcode-cn.com/problems/regular-expression-matching/`
+  ```
+  export default (str, mode) => {
+    // 对模式变量进行正则筛选
+    let modeArr = mode.match(/([a-z.]\*)|([a-z]+(?=([a-z.]\*)|$))/g)
+    let cur = 0
+    let strLen = str.length
+    for (let i = 0, len = modeArr.length, m; i < len; i++) {
+      // 对于模式分为三类，.*|a*|cdef
+      m = modeArr[i].split('')
+      // 如果第二位是*表示是有模式的
+      if (m[1] === '*') {
+        if (m[0] === '.') {
+          cur = strLen
+          break
+        } else {
+          while (str[cur] === m[0]) {
+            cur++
+          }
+        }
+      } else {
+        for (let j = 0, jl = m.length; j < jl; j++) {
+          if (m[j] !== str[cur]) {
+            return false
+          } else {
+            cur++
+          }
+        }
+      }
+    }
+    return cur === strLen
+  }
+  ```
 
 ### 排序
 * 冒泡排序
