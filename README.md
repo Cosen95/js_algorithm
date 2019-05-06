@@ -28,6 +28,7 @@ javascript数据结构与算法
 重复出现的子串要计算它们出现的次数。
 
     地址：`https://leetcode-cn.com/problems/count-binary-substrings/`
+    
   ```
   // 优化前
   export default (str) => {
@@ -79,6 +80,31 @@ javascript数据结构与算法
 * 种花问题
 
 * 格雷编码
+  * 题目描述：格雷编码是一个二进制数字系统，在该系统中，两个连续的数值仅有一个位数的差异。给定一个代表编码总位数的非负整数 n，打印其格雷编码序列。格雷编码序列必须以 0 开头。
+  
+    地址： `https://leetcode-cn.com/problems/gray-code/`
+  ```
+  export default (n) => {
+    // 递归函数，用来计算输入为n的格雷编码序列
+    let make = (n) => {
+     if (n === 1) {
+      return ['0', '1']
+     } else {
+      let prev = make(n - 1);
+      let result = [];
+      let max = Math.pow(2, n) - 1;
+      for(let i = 0, len = prev.length; i < len; i++) {
+       result[i] = `0${prev[i]}`;
+       result[max-i] = `1${prev[i]}`
+      }
+      return result
+     }
+    }
+    return make(n).map(item => {
+     return parseInt(item, 2)
+    })
+   }
+  ```
 
 ### 正则表达式
 * 重复的子字符串
