@@ -112,6 +112,45 @@ javascript数据结构与算法
   ```
 * 卡牌分组
 
+  * 地址：`https://leetcode-cn.com/problems/x-of-a-kind-in-a-deck-of-cards/`
+  
+  ```
+  export default (arr) => {
+   // 对这副牌进行排序，升序、降序都可以
+   arr.sort((a, b) => a - b)
+   let min = Number.MAX_SAFE_INTEGER;
+   let dest = [];
+   let result = true;
+   if(arr.length <= 1) {
+    result = false;
+    return false;
+   }
+   for(let i = 0, len = arr.length, temp = []; i < len; i++) {
+    temp.push(arr[i]);
+    for(let j = i + 1; j < len - 1; j++) {
+     if(arr[i] === arr[j]) {
+      temp.push(arr[j])
+     } else {
+      if(min > temp.length) {
+       min = temp.length
+      }
+      dest.push([].concat(temp))
+      temp.length = 0;
+      i = j;
+      break;
+     }
+    }
+   }
+   dest.every(item => {
+    if(item.length % min !== 0) {
+     result = false;
+     return false
+    }
+   })
+   return result
+  }
+  ```
+
 * 种花问题
 
 * 格雷编码
