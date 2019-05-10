@@ -113,7 +113,6 @@ javascript数据结构与算法
 * 卡牌分组
 
   * 地址：`https://leetcode-cn.com/problems/x-of-a-kind-in-a-deck-of-cards/`
-  
   ```
   export default (arr) => {
    // 对这副牌进行排序，升序、降序都可以
@@ -152,6 +151,25 @@ javascript数据结构与算法
   ```
 
 * 种花问题
+
+  * 地址：`https://leetcode-cn.com/problems/can-place-flowers/`
+  ```
+  export (flowerbed, n) => {
+   let max = 0;
+   for(let i = 0, len = flowerbed.length - 1; i < len; i++) {
+    if(flowerbed[i] === 0) {
+     if(i === 0 && flowerbed[1] === 0) {
+      max++;
+      i++;
+     } else if(flowerbed[i-1] === 0 && flowerbed[i+1] === 0) {
+      max++;
+      i++
+     }
+    }
+   } 
+   return max >= n
+  }
+  ```
 
 * 格雷编码
   * 题目描述：格雷编码是一个二进制数字系统，在该系统中，两个连续的数值仅有一个位数的差异。给定一个代表编码总位数的非负整数 n，打印其格雷编码序列。格雷编码序列必须以 0 开头。
