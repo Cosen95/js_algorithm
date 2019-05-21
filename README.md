@@ -252,6 +252,33 @@ javascript数据结构与算法
 
 * 选择排序
 
+* 按奇偶排序数组 II
+  * 题目描述：给定一个非负整数数组 A， A 中一半整数是奇数，一半整数是偶数。对数组进行排序，以便当 A[i] 为奇数时，i 也是奇数；当 A[i] 为偶数时， i 也是偶数。
+  
+    地址： `https://leetcode-cn.com/problems/sort-array-by-parity-ii/`
+  ```
+  export default (arr) => {
+   // 进行升序排序
+   arr.sort((a, b) => a - b)
+   // 声明一个空数组用来存储奇偶排序后的数组
+   let r = [];
+   // 记录奇数、偶数位下标
+   let odd = 1;
+   let even = 0;
+   // 对数组进行遍历
+   arr.forEach(item => {
+    if(item % 2 === 1) {
+     r[odd] = item;
+     odd += 2;
+    } else {
+     r[even] = item;
+     even += 2;
+    }
+   })
+   return r
+  }
+  ```
+
 * 数组中的第k个最大元素
 
 ### 递归
