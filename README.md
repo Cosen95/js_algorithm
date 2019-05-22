@@ -279,6 +279,30 @@ javascript数据结构与算法
   }
   ```
 
+* 最大间距
+  * 题目描述：给定一个无序的数组，找出数组在排序之后，相邻元素之间最大的差值。如果数组元素个数小于 2，则返回 0。
+  
+    地址： `https://leetcode-cn.com/problems/maximum-gap/`
+  ```
+  export default (arr) => {
+   // 如果数组长度小于2返回0
+   if(arr.length < 2) {
+    return 0
+   }
+   // 排序
+   arr.sort((a, b) => a - b)
+   // 用于保存相邻元素的最大差值
+   let max = 0;
+   for(let i = 0, len = arr.length - 1, tmp; i < len; i++) {
+    tmp = arr[i+1] - arr [i]
+    if(tmp > max) {
+     max = tmp
+    }
+   }
+   return max
+  }
+  ```
+  
 * 数组中的第k个最大元素
 
 ### 递归
