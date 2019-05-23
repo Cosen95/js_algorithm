@@ -304,7 +304,14 @@ javascript数据结构与算法
   ```
   
 * 数组中的第k个最大元素
-
+  * 题目描述：在未排序的数组中找到第 k 个最大的元素。请注意，你需要找的是数组排序后的第 k 个最大的元素，而不是第 k 个不同的元素。
+  
+    地址： `https://leetcode-cn.com/problems/kth-largest-element-in-an-array/`
+  ```
+  export default (arr, k) => {
+   return arr.sort((a, b) => b - a)[k - 1]
+  }
+  ```
 ### 递归
 * 复原IP地址
 
