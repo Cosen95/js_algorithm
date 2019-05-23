@@ -312,6 +312,36 @@ javascript数据结构与算法
    return arr.sort((a, b) => b - a)[k - 1]
   }
   ```
+  
+* 缺失的第一个正数
+  * 题目描述：给定一个未排序的整数数组，找出其中没有出现的最小的正整数。
+  
+    地址： `https://leetcode-cn.com/problems/first-missing-positive/`
+  ```
+  export default (arr) => {
+   // 过滤掉非正整数
+   arr = arr.filter(item => item > 0);
+   // 判读正整数数组是不是为空，如果为空，直接返回1
+   if(arr.length) {
+    // 升序排列数组
+    arr.sort((a, b) => a - b)
+    // 如果第一个元素不为1，返回1
+    if(arr[0] !== 1) {
+     return 1
+    } else {
+     for(let i = 0, len = arr.length - 1; i < len; i++) {
+      if(arr[i + 1] - arr[i] > 1) {
+       return arr[i] + 1
+      }
+     }
+     // 如果排序后数组是连续的正整数，则最后一个元素加1
+     return arr.pop() + 1
+    }
+   } else {
+    return 1
+   }
+  }
+  ```
 ### 递归
 * 复原IP地址
 
